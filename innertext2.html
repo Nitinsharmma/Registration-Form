@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+			background-image:url('pexels-bithinrajxlr8-2763927.jpg');
+            color: ghostwhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:150vh;
+            margin: 0;
+        }
+        .container {
+            background: linear-gradient(135deg, rgba(255, 255 , 255 ,0.1), rgba(255, 255, 255, 0));
+			-webkit-backdrop-filter: blur(20px);
+			backdrop-filter: blur(20px);
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+			border: 1px solid rgba(255, 255 , 255, 0.18);
+			border-radius: 32px;
+			width: 480px;
+        }
+
+    
+		.notification {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 32px;
+    width: 350px;
+    position: absolute;
+    left: -40%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    color: ghostwhite;
+    font-family: Arial, sans-serif;
+}
+
+.notification h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+	
+    background: linear-gradient(-100deg, #da70d6, #dda0dd, #d8bfd8, #1e90ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.notification .badge {
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    background-color: #699eff;
+    color: #ffffff;
+    border-radius: 12px;
+    animation: shimmer 2s infinite;
+}
+
+.notification a {
+    text-decoration: none;
+    color: hotpink;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.notification a:hover {
+    color: #ffccff;
+}
+
+		.badge {
+		background-image: linear-gradient(-60deg, #ffffff00 0%, #ffffff00 40%,
+		#ffffff44 40%, #ffffff44 60%, #ffffff00 60%, #ffffff00 100%);
+		background-size: 200% 100%;
+		background-repeat: no-repeat;
+		}
+		@keyframes shimmer {
+		0% {
+		background-position-x: 150%;
+		}
+		40%,
+		100% {
+		background-position--x: -150%;
+		}
+		}
+		.badge {
+		animation: shimmer 2s infinite;
+		}
+        h1 {
+            font-size: 2em;
+            background: linear-gradient(-100deg, #da70d6, #dda0dd, #d8bfd8, #1e90ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input:hover, select:hover {
+            border: 2px solid hotpink;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border: 2px solid hotpink;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: hotpink;
+        }
+		
+video {
+    border: 2px solid hotpink;
+    box-shadow: 0 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 10px;
+	width:60%;
+	padding: -10px;
+	margin: -300px;
+	position: absolute;
+    left: -40%;
+    top:30%;
+    transform: translate(50%, -50%);
+}
+
+
+
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Registration Form</h1>
+    <form name="myform" method="post" action="abc.jsp" onsubmit="return validateform()">
+        
+		<table>
+            <tr>
+                <td>Reg_No</td>
+                <td><input type="number" name="reg_no" placeholder="12 Digits number" required></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" placeholder="Enter Full Name" required></td>
+            </tr>
+            <tr>
+                <td>Father's Name</td>
+                <td><input type="text" name="father_name" placeholder="Enter Father's Name"></td>
+            </tr>
+            <tr>
+                <td>Mother's Name</td>
+                <td><input type="text" name="mother_name" placeholder="Enter Mother's Name"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" name="address" placeholder="Enter Address"></td>
+            </tr>
+            <tr>
+                <td>DOB</td>
+                <td><input type="date" name="dob" required></td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select name="course" required>
+                        <option value="" disabled selected>--Select Course--</option>
+                        <option value="B.com">B.com</option>
+                        <option value="Bca">Bca</option>
+                        <option value="Bsc">Bsc</option>
+                        <option value="BA">BA</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone No</td>
+                <td><input type="tel" name="phone" placeholder="+91" pattern="[0-9]{10}" title="Enter a valid 10-digit number" required></td>
+
+            </tr>
+            <tr>
+                <td>Email ID</td>
+                <td><input type="email" name="email" placeholder="@gmail.com" required></td>
+
+            
+			</tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" placeholder="6 characters" required></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select name="gender" required>
+					
+                        <option value="select-gender">--Select-Gender--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Hobbies</td>
+                <td class="checkbox-group">
+                    <label><input type="checkbox" name="hobbies[]" value="playing"> Playing</label>
+                    <label><input type="checkbox" name="hobbies[]" value="singing"> Singing</label>
+                    <label><input type="checkbox" name="hobbies[]" value="dancing"> Dancing</label>
+                    <label><input type="checkbox" name="hobbies[]" value="reading"> Reading</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload Image</td>
+                <td><input type="file" name="image" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+			<div class="notification">
+    <h1>Notification & Releases</h1>
+    <div class="badge" role="status">New</div>
+    <span>
+        <a href="https://www.rrbapply.gov.in/#/auth/landing"
+		style="text-decoration: none; color: 9370db;">
+            🚇RRB Group D Recruitment 2025
+        </a>
+<br>
+		<div class="badge" role="status">New</div>
+		<a href="https://agnipathvayu.cdac.in/avreg/candidate/login"
+		style="text-decoration: none; color: 9370db;">
+		✈Agniveer vayu vacancies 2025
+		</a>
+    </span>
+</div>
+
+    <div>
+	<video autoplay muted controls poster="airforce2.jfif" style="border-radius: 10px; margin-top: 20px;">
+    <source src="Vayu Shakti 2019  7th edition.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+</div>
+        </table>
+    </form>
+</div>
+<script>
+function validateform() {
+    var name = document.myform.name.value;
+    var password = document.myform.password.value;
+    var email = document.myform.email.value;
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    var regNo = document.myform.reg_no.value;
+    var course = document.myform.course.value;
+    var gender = document.myform.gender.value;
+    var hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+	var regNo = document.myform.reg_no.value.trim();
+	var name = document.myform.name.value.trim();
+
+
+    if (name.trim() === "") {
+        alert("Name can't be blank");
+        return false;
+    }
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return false;
+    }
+    if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+        alert("Please enter a valid e-mail address");
+        return false;
+    }
+    if (regNo.length !== 12) {
+        alert("Reg_No must be exactly 12 digits");
+        return false;
+    }
+    if (course === "Select-Course") {
+        alert("Please select a course");
+        return false;
+    }
+    if (gender === "select-gender") {
+        alert("Please select your gender");
+        return false;
+    }
+    if (hobbies.length === 0) {
+        alert("Please select at least one hobby");
+        return false;
+    }
+    return true;
+}
+input.addEventListener('input', function() {
+    if (this.name === 'password' && this.value.length < 6) {
+        this.setCustomValidity('Password must be at least 6 characters.');
+    } else {
+        this.setCustomValidity('');
+    }
+});
+if (course === "" || course === "--Select Course--") {
+    alert("Please select a course");
+    return false;
+}
+
+</script>
+
+</body>
+</html>
